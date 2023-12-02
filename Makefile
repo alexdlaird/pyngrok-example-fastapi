@@ -27,4 +27,5 @@ clean: nopyc
 test: install
 	@( \
 		source venv/bin/activate; \
+		pytest -v; \
 	)
