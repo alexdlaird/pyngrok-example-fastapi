@@ -3,14 +3,14 @@ import sys
 
 from fastapi import FastAPI
 from fastapi.logger import logger
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
     # ... The rest of our FastAPI settings
 
-    BASE_URL = "http://localhost:8000"
-    USE_NGROK = os.environ.get("USE_NGROK", "False") == "True"
+    BASE_URL: str = "http://localhost:8000"
+    USE_NGROK: bool = os.environ.get("USE_NGROK", "False") == "True"
 
 
 settings = Settings()
