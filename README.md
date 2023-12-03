@@ -4,4 +4,4 @@
 # pyngrok Example - FastAPI
 
 This is an example project that shows how to easily integrate [`pyngrok`](https://github.com/alexdlaird/pyngrok)
-with [FastAPI](https://fastapi.tiangolo.com/), a project showing [the integration example provided in the docs](https://pyngrok.readthedocs.io/en/latest/integrations.html#fastapi).
+with [FastAPI](https://fastapi.tiangolo.com/), as [summarized in the docs](https://pyngrok.readthedocs.io/en/latest/integrations.html#fastapi).

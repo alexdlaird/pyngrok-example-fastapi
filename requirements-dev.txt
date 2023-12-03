@@ -1,2 +1,3 @@
 pyngrok==7.0.2
 pytest
+httpx
