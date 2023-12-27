@@ -24,7 +24,7 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: make install
-      - name: Run tests
+      - name: Test
         run: make test
 
   automerge:
