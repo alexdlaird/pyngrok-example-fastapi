@@ -1,16 +1,14 @@
 import os
-import unittest
 
 from fastapi.testclient import TestClient
 
-os.environ["USE_NGROK"] = "True"
+del os.environ["USE_NGROK"]
 from pyngrokexamplefastapi.server import app
 
 client = TestClient(app)
 
 
-@unittest.skipIf("NGROK_AUTHTOKEN" not in os.environ, "NGROK_AUTHTOKEN environment variable not set")
-def test_healthcheck():
+def test_healthcheck_no_ngrok():
     response = client.get("/healthcheck")
     assert response.status_code == 200
     assert response.json() == {"server": "up"}
