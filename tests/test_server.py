@@ -9,7 +9,7 @@ from pyngrokexamplefastapi.server import app
 client = TestClient(app)
 
 
-@unittest.skipIf("NGROK_AUTHTOKEN" not in os.environ, "NGROK_AUTHTOKEN environment variable not set")
+@unittest.skipIf(not os.environ.get("NGROK_AUTHTOKEN"), "NGROK_AUTHTOKEN environment variable not set")
 def test_healthcheck():
     response = client.get("/healthcheck")
     assert response.status_code == 200
