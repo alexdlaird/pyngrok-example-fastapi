@@ -24,7 +24,7 @@ def init_webhooks(base_url):
 # Initialize the FastAPI app for a simple web server
 app = FastAPI()
 
-if settings.USE_NGROK and "NGROK_AUTHTOKEN" in os.environ:
+if settings.USE_NGROK and os.environ.get("NGROK_AUTHTOKEN"):
     # pyngrok should only ever be installed or initialized in a dev environment when this flag is set
     from pyngrok import ngrok
 

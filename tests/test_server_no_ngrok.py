@@ -2,7 +2,7 @@ import os
 
 from fastapi.testclient import TestClient
 
-del os.environ["USE_NGROK"]
+os.environ["USE_NGROK"] = "False"
 from pyngrokexamplefastapi.server import app
 
 client = TestClient(app)
