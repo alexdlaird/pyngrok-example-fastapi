@@ -34,7 +34,7 @@ if settings.USE_NGROK and os.environ.get("NGROK_AUTHTOKEN"):
 
     # Open a ngrok tunnel to the dev server
     public_url = ngrok.connect(port).public_url
-    logger.info("ngrok tunnel \"{}\" -> \"http://127.0.0.1:{}\"".format(public_url, port))
+    logger.info(f"ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\"")
 
     # Update any base URLs or webhooks to use the public ngrok URL
     settings.BASE_URL = public_url
