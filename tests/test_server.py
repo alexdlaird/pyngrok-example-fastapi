@@ -6,9 +6,11 @@ import unittest
 
 from fastapi.testclient import TestClient
 
-os.environ["USE_NGROK"] = "True"
-from pyngrokexamplefastapi.server import app
+from pyngrokexamplefastapi.server import create_app
 
+os.environ["USE_NGROK"] = "True"
+
+app = create_app()
 client = TestClient(app)
 
 
@@ -17,3 +19,4 @@ def test_healthcheck():
     response = client.get("/healthcheck")
     assert response.status_code == 200
     assert response.json() == {"server": "up"}
+    assert "ngrok" in app.settings.BASE_URL
