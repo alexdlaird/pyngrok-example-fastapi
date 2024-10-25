@@ -1,19 +1,18 @@
-.PHONY: all nopyc clean virtualenv install test
+.PHONY: all nopyc clean install test
 
 SHELL := /usr/bin/env bash
 PYTHON_BIN ?= python
+PROJECT_VENV ?= venv
 
-all: virtualenv install
+all: test
 
-virtualenv:
-	@if [ ! -d "venv" ]; then \
-		$(PYTHON_BIN) -m pip install virtualenv --user; \
-		$(PYTHON_BIN) -m virtualenv venv; \
-	fi
+venv:
+	$(PYTHON_BIN) -m pip install virtualenv --user
+	$(PYTHON_BIN) -m virtualenv $(PROJECT_VENV)
 
-install: virtualenv
+install: venv
 	@( \
-		source venv/bin/activate; \
+		source $(PROJECT_VENV)/bin/activate; \
 		python -m pip install -r requirements.txt -r requirements-dev.txt; \
 	)
 
@@ -22,10 +21,10 @@ nopyc:
 	find . -name __pycache__ | xargs rm -rf || true
 
 clean: nopyc
-	rm -rf _build dist *.egg-info venv
+	rm -rf _build dist *.egg-info $(PROJECT_VENV)
 
 test: install
 	@( \
-		source venv/bin/activate; \
+		source $(PROJECT_VENV)/bin/activate; \
 		pytest -v; \
 	)
