@@ -26,7 +26,7 @@ def create_app():
     app = FastAPI()
     app.settings = Settings()
 
-    if app.settings.USE_NGROK and os.environ.get("NGROK_AUTHTOKEN"):
+    if app.settings.USE_NGROK:
         # pyngrok should only ever be installed or initialized in a dev environment when this flag is set
         from pyngrok import ngrok
 
