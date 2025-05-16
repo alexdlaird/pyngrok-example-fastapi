@@ -5,6 +5,7 @@ import os
 import unittest
 
 from fastapi.testclient import TestClient
+from pyngrok import process, conf
 
 from pyngrokexamplefastapi.server import create_app
 
@@ -20,3 +21,4 @@ def test_healthcheck():
     assert response.status_code == 200
     assert response.json() == {"server": "up"}
     assert "ngrok" in app.settings.BASE_URL
+    assert process.is_process_running(conf.get_default().ngrok_path)
