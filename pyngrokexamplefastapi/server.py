@@ -10,7 +10,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    # ... The rest of our FastAPI settings
+    # ... The rest of the FastAPI settings
 
     BASE_URL: str = "http://localhost:8000"
     USE_NGROK: bool = os.environ.get("USE_NGROK", "False") == "True"
@@ -42,7 +42,7 @@ def create_app():
         app.settings.BASE_URL = public_url
         init_webhooks(public_url)
 
-    # ... Initialize routers and the rest of our app
+    # ... Initialize routers and the rest of your app
     @app.get('/healthcheck')
     def get_healthcheck():
         return {"server": "up"}
