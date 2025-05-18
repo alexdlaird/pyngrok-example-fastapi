@@ -10,7 +10,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    # ... The rest of the FastAPI settings
+    # ... The rest of your FastAPI settings
 
     BASE_URL: str = "http://localhost:8000"
     USE_NGROK: bool = os.environ.get("USE_NGROK", "False") == "True"
