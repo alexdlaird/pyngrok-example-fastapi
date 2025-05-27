@@ -10,14 +10,14 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    # ... The rest of your FastAPI settings
+    # ... Implement the rest of your FastAPI settings
 
     BASE_URL: str = "http://localhost:8000"
     USE_NGROK: bool = os.environ.get("USE_NGROK", "False") == "True"
 
 
 def init_webhooks(base_url):
-    # Update inbound traffic via APIs to use the public-facing ngrok URL
+    # ... Implement updates necessary so inbound traffic uses the public-facing ngrok URL
     pass
 
 
@@ -27,7 +27,7 @@ def create_app():
     app.settings = Settings()
 
     if app.settings.USE_NGROK:
-        # pyngrok should only ever be installed or initialized in a dev environment when this flag is set
+        # Only import pyngrok and install if we're actually going to use it
         from pyngrok import ngrok
 
         # Get the dev server port (defaults to 8000 for Uvicorn, can be overridden with `--port`
@@ -42,7 +42,7 @@ def create_app():
         app.settings.BASE_URL = public_url
         init_webhooks(public_url)
 
-    # ... Initialize routers and the rest of your app
+    # ... Implement routers and the rest of your app
     @app.get('/healthcheck')
     def get_healthcheck():
         return {"server": "up"}
