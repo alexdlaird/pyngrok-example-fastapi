@@ -1,3 +1,3 @@
-pyngrok==7.2.13
+pyngrok==7.3.0
 pytest
 httpx
