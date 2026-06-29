@@ -1,2 +1,2 @@
-fastapi==0.138.1
+fastapi==0.138.2
 pydantic-settings==2.14.2
