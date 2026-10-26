@@ -42,6 +42,12 @@ def create_app():
         init_webhooks(public_url)
 
     # ... Implement routers and the rest of your app
+    @app.middleware("http")
+    async def add_muppets(request, call_next):
+        response = await call_next(request)
+        response.headers["X-Muppets"] = "42"
+        return response
+
     @app.get('/healthcheck')
     def get_healthcheck():
         return {"server": "up"}
