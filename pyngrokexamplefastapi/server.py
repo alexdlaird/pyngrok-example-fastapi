@@ -5,7 +5,6 @@ import os
 import sys
 
 from fastapi import FastAPI
-from fastapi.logger import logger
 from pydantic_settings import BaseSettings
 
 
@@ -36,7 +35,7 @@ def create_app():
 
         # Open a ngrok tunnel to the dev server
         public_url = ngrok.connect(port).public_url
-        logger.info(f"ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\"")
+        print(f"ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:{port}\"")
 
         # Update any base URLs or webhooks to use the public ngrok URL
         app.settings.BASE_URL = public_url

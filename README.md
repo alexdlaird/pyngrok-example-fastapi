@@ -5,3 +5,15 @@
 
 This is an example project that shows how to easily integrate [`pyngrok`](https://github.com/alexdlaird/pyngrok)
 with [FastAPI](https://fastapi.tiangolo.com/), as [summarized in the docs](https://pyngrok.readthedocs.io/en/latest/integrations.html#fastapi).
+
+## Running
+
+To run the example locally, install its dependencies, then start the server with `USE_NGROK` set to open a tunnel.
+The tunnel's public URL is printed when the server starts.
+
+```sh
+make install
+USE_NGROK=True NGROK_AUTHTOKEN=$NGROK_AUTHTOKEN venv/bin/uvicorn pyngrokexamplefastapi.server:create_app --factory
+```
+
+To run the tests, use `make test`. Tests that open a tunnel are skipped if `NGROK_AUTHTOKEN` isn't set.
