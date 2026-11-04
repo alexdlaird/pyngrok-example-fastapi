@@ -45,7 +45,7 @@ def create_app():
     @app.middleware("http")
     async def add_muppets(request, call_next):
         response = await call_next(request)
-        response.headers["X-Muppets"] = "42"
+        response.headers["X-Muppets"] = "no strings attached"
         return response
 
     @app.get('/healthcheck')
